@@ -31,13 +31,13 @@ class Tweets(db.Model):
 class MinimumId(db.Model):
 
     __tablename__ = "minimum_id"
-    minimum_id = db.Column(db.String, unique=True, primary_key=True)
+    value = db.Column(db.String, unique=True, primary_key=True)
 
-    def __init__(self, minimum_id):
-        self.minimum_id = minimum_id
+    def __init__(self, value):
+        self.value = value
 
     def __repr__(self):
-        return '<MinimumId %d>' % self.minimum_id
+        return '<MinimumId %s>' % self.value
 
 
 if __name__ == '__main__':

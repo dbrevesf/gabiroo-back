@@ -1,200 +1,70 @@
-TWEET_SAMPLES = [
-      {'id': 973307645405876231, 'text': 'Ilan diz que é bom começar 2018 com inflação abaixo da meta https://t.co/sf7fC1M8rp', 'origin': 'Portal R7.com'},
-      {'id': 973306499144540160, 'text': 'Provável que você nunca tenha ouvido falar de uma das mais poderosas alianças do mundo. Pelo simples fato de sua ex… https://t.co/QI7haXpCCm', 'origin': 'The Intercept Brasil'},
-      {'id': 973306449504997376, 'text': 'Lula e seu povo: ex-presidente sobe nas pesquisas mesmo depois das condenações, mas seus eleitores não saem à rua c… https://t.co/MnOlDLHqBu', 'origin': 'CartaCapital'},
-      {'id': 973305129645428736, 'text': 'Sobreviventes da Guerra da Síria vivem com medo em abrigos  https://t.co/oOGmhIyVU6 https://t.co/k2YaKoUSRw', 'origin': 'Portal R7.com'},
-      {'id': 973302795863457792, 'text': 'Trump, invariavelmente, almoça um Big Mac, acompanhado de uma das 12 latas de Coca diet que ingere diariamente. O b… https://t.co/aiPAOmJ4SE', 'origin': 'CartaCapital'},
-      {'id': 973302694529167367, 'text': 'Primeira atriz a simular orgasmo em um filme foi também a inventora de uma tecnologia para guiar torpedos https://t.co/oMFeGWLxVr', 'origin': 'EL PAÍS Brasil'},
-      {'id': 973302625440616448, 'text': "Premiê britânica diz que é 'altamente provável' que a Rússia seja responsável pelo ataque a ex-espião… https://t.co/h2KMh2ln5d", 'origin': 'G1'},
-      {'id': 973302621195796482, 'text': 'Cameron Diaz pensa em se aposentar da carreira de atriz https://t.co/NEkBOJu6o0', 'origin': 'Portal R7.com'},
-      {'id': 973302080336289793, 'text': 'País registra apenas 36 casos de crimes sexuais contra meninas em estradas. Número pode refletir subnotificação. Vi… https://t.co/O9xkBJrE5T', 'origin': 'revista piauí'},
-      {'id': 973301299251961856, 'text': '“Hoje, provavelmente, todos terão medo de ir à aula, assim como amanhã e depois e todos os dias sequentes desta ope… https://t.co/PGkSOVu7AT', 'origin': 'Diplomatique Brasil'},
-      {'id': 973300096162062336, 'text': "Brasil enfrentará Alemanha com cinco remanescentes dos '7 a 1' https://t.co/BrloMzbET2", 'origin': 'Portal R7.com'},
-      {'id': 973298836725751808, 'text': 'Justiça absolve vendedor que ficou 6 meses preso por engano em SP https://t.co/fm9k3qtqOT https://t.co/ZZDdT1FkCr', 'origin': 'G1'},
-      {'id': 973297578451193856, 'text': 'PM é internado em estado grave após briga com vizinhos  https://t.co/2kM7arZLt9', 'origin': 'Portal R7.com'},
-      {'id': 973295817607008256, 'text': 'Na base da confiança, clientes pagam e pegam o próprio troco em lanchonete sem operadora de caixa em Goiânia… https://t.co/s8olB4pqSh', 'origin': 'G1'},
-      {'id': 973295162414784513, 'text': 'Leia a entrevista do Le Monde Diplomatique com Gilberto Carvalho, assessor do ex-presidente Lula e ministro da Secr… https://t.co/7Mp0Mk4ZY7', 'origin': 'Diplomatique Brasil'},
-      {'id': 973295066088398848, 'text': 'Álbum de figurinhas da Copa do Mundo 2018 será lançado domingo https://t.co/W4HeIuZdIT', 'origin': 'Portal R7.com'},
-      {'id': 973293301389516801, 'text': 'Um quarto dos deputados federais trocou de partido no atual mandato https://t.co/4FwHP1Eu8A #politicaG1 https://t.co/CsTwrKqzi6', 'origin': 'G1'},
-      {'id': 973293048602935296, 'text': 'Andréia Sadi: Na mira de investigações, Temer convoca líderes e vice-líderes para defender governo https://t.co/SgBLz9iG0L #politicaG1', 'origin': 'G1'},
-      {'id': 973292585119830018, 'text': 'Opinião | "O que há de tão ameaçador em um homem nu junto a uma criança?", por @brumelianebrum https://t.co/8XHafqKjT1', 'origin': 'EL PAÍS Brasil'},
-      {'id': 973292545571737601, 'text': 'Bumlai relatou à PF reunião com Delfim para tratar de Belo Monte https://t.co/O2zQHqCGnP', 'origin': 'Portal R7.com'},
-      {'id': 973292545458323456, 'text': 'Maia avalia que, sem verba da União, problema da segurança dificilmente será resolvido https://t.co/UN2nC1V1GC… https://t.co/LzceXNXihc', 'origin': 'G1'},
-      {'id': 973290028905345024, 'text': 'Coluna do Fraga: Globo faz matéria sobre corrupção, mas poupa genro de Silvio Santos https://t.co/QhLlgboKIr', 'origin': 'Portal R7.com'},
-      {'id': 973287522682810369, 'text': "'Redes sociais não têm o poder de eleger ninguém', diz especialista https://t.co/rssOnZmDn8", 'origin': 'Portal R7.com'},
-      {'id': 973287521764257796, 'text': 'MP encontra novo canal de mineradora para despejo irregular no Pará https://t.co/xSDjzTNgBQ https://t.co/ArgHLNSpSP', 'origin': 'G1'},
-      {'id': 973286512501673984, 'text': 'O surgimento de empresas que oferecem rastreamento de código genético a fim de descobrir a origem genealógica de se… https://t.co/vo7VlK4PkU', 'origin': 'Diplomatique Brasil'},
-      {'id': 973286448492417030, 'text': 'RT @Mleitaonetto: Vara do Trabalho decide que feriado do Dia do Evangélico não abrange servidores federais https://t.co/6u1zNF2la8', 'origin': 'G1'},
-      {'id': 973286002558091264, 'text': 'Sarampo chega a mais países na América em 2018; região foi a primeira livre da doença https://t.co/b9zxnISKa5 #G1 https://t.co/apuA1jsVC1', 'origin': 'G1'},
-      {'id': 973284996231376897, 'text': 'Tite garante que seleção brasileira não é tão dependente de Neymar https://t.co/yXjye92kUR', 'origin': 'Portal R7.com'},
-      {'id': 973283733511065607, 'text': 'Tyler, The Creator cancela show no Lolapalooza; Aurora substitui rapper https://t.co/RpjYBrRkpd (via @sitevirgula)', 'origin': 'Portal R7.com'},
-      {'id': 973282526163800070, 'text': 'Levantamento revela que polarização no Facebook atrai perfis mais velhos. Via @agenciapublica https://t.co/1ro9C7khtI', 'origin': 'EL PAÍS Brasil'},
-      {'id': 973282480416370690, 'text': 'Cachorro de Ariana Grande leva prêmio de “melhor animal” https://t.co/dIMNup6oMN', 'origin': 'Portal R7.com'},
-      {'id': 973280572452810752, 'text': 'Porque as mudanças do governo Trump em relação aos acordos comerciais, clima, confronto com a Coreia do Norte e com… https://t.co/UWaSruTmiL', 'origin': 'Diplomatique Brasil'},
-      {'id': 973279963020275713, 'text': 'Netflix anuncia série brasileira criada por Kondzilla para 2019 https://t.co/dLojEgChwD', 'origin': 'Portal R7.com'},
-      {'id': 973277445963972608, 'text': 'PSG manda comitiva ao Brasil para garantir Neymar no clube https://t.co/DEZwyBAcIO', 'origin': 'Portal R7.com'},
-      {'id': 973276248515530752, 'text': 'Barroso, um juiz decidido a infernizar a vida de Temer: https://t.co/tiPui97SIn https://t.co/cNUvuoIOzy', 'origin': 'CartaCapital'},
-      {'id': 973275180716797953, 'text': "'The Bells', álbum com música de Roberto e Erasmo sobre muro de Berlim, sai em CD https://t.co/b3untkOh7E #G1 https://t.co/AcbTs0hF0K", 'origin': 'G1'},
-      {'id': 973274929389948928, 'text': 'Reforma da Previdência será retomada nos debates eleitorais https://t.co/BzwExrl7ld', 'origin': 'Portal R7.com'},
-      {'id': 973274865384984578, 'text': '[The piauí Herald] Traficantes e militares se unem em intervenção contra Crivella na Vila Kennedy… https://t.co/MdLpWYTyNS', 'origin': 'revista piauí'},
-      {'id': 973274496823103488, 'text': 'RT @barreiragabriel: Ministro do STF determina perícia médica em Jorge Picciani para avaliar pedido de prisão domiciliar https://t.co/8Q40J…', 'origin': 'G1'},
-      {'id': 973274426086232065, 'text': 'João Donato lança três álbuns inéditos, gravados no Brasil entre 1978 e 1989 https://t.co/pccqD5hkOU #G1 https://t.co/OKf0fBv9UU', 'origin': 'G1'},
-      {'id': 973273922664738816, 'text': 'Titãs encenam violência sexual contra mulher em ópera-rock que estreia em abril https://t.co/nQVxMdSBIG #G1 https://t.co/5NMETJmkl5', 'origin': 'G1'},
-      {'id': 973273671488999425, 'text': "Álbum de tom carioca, 'Integridade' atesta que Claudio Nucci segue outras toadas https://t.co/y1yfu3PCoE #G1 https://t.co/EifllmjXf1", 'origin': 'G1'},
-      {'id': 973272590818205696, 'text': 'O corpo do menino foi encontrado enrolado em um cobertor no porta-malas do carro da companheira do pai https://t.co/CsA4WgP9Wd', 'origin': 'EL PAÍS Brasil'},
-      {'id': 973272424388083712, 'text': 'Blog da DB: Quem é Faustão pra chamar alguém de gordo? https://t.co/bmBYMDD4xX', 'origin': 'Portal R7.com'},
-      {'id': 973271586303246336, 'text': '"Se Guerra e Paz, no século XIX, do também russo Liev Tolstói, descreveu os pormenores da guerra napoleônica na Rús… https://t.co/kq8Xkvk35x', 'origin': 'Diplomatique Brasil'},
-      {'id': 973269897001275393, 'text': 'Leis contra fake news colocariam em risco liberdade de expressão https://t.co/MhPwoQ4RpE', 'origin': 'Portal R7.com'},
-      {'id': 973268637757747202, 'text': 'Valdo Cruz: PT avalia estratégia para levar a julgamento no STF habeas corpus para Lula https://t.co/vBDusJRYf2 #politicaG1', 'origin': 'G1'},
-      {'id': 973268379359416321, 'text': 'Estudo da Firjan mostra que, em 2017, 92 mil postos de trabalho deixaram de existir no RJ https://t.co/ciPBKZvRXT… https://t.co/LQ32DCi7Hi', 'origin': 'G1'},
-      {'id': 973267631842066432, 'text': "Daniela Mercury dirige 'Caju', show que festeja 60 anos do nascimento de Cazuza https://t.co/UHoLsPQlyM #G1 https://t.co/OECwKU6XHq", 'origin': 'G1'},
-      {'id': 973267380246892544, 'text': 'Skinhead que obrigou jovens a pular de trem na Grande SP é preso https://t.co/iRlMscWZiq', 'origin': 'Portal R7.com'},
-      {'id': 973265870460919808, 'text': 'Greve dos Correios: veja como evitar problemas em atrasos de contas e encomendas https://t.co/eIzRSLlOnP #G1 https://t.co/9TkPQa5rb2', 'origin': 'G1'},
-      {'id': 973265750667530241, 'text': 'RT @abraji: Instituto Patrícia Galvão @IPatriciaGalvao oferece financiamento para reportagens sobre temas relacionados ao aborto no Brasil…', 'origin': 'The Intercept Brasil'},
-      {'id': 973264862720622595, 'text': 'Operação da Polícia Federal não é o único problema que a BRF enfrenta https://t.co/9tsk7ZapHO', 'origin': 'Portal R7.com'},
-      {'id': 973264396054159360, 'text': "'Contador de Auschwitz' morre aos 96 anos, diz revista alemã https://t.co/7uud93bjsd #G1 https://t.co/JW85LtXEJj", 'origin': 'G1'},
-      {'id': 973263102799237121, 'text': 'Um quarto dos deputados federais trocou de partido no atual mandato https://t.co/4FwHP1Eu8A #politicaG1 https://t.co/B5oST9Q19o', 'origin': 'G1'},
-      {'id': 973262850390097922, 'text': 'Andréia Sadi: Na mira de investigações, Temer convoca líderes e vice-líderes para defender governo https://t.co/SgBLz9Ahpl #politicaG1', 'origin': 'G1'},
-      {'id': 973262599818227713, 'text': 'Andréia Sadi: Em meio a negociações para eleição, Temer recebe Meirelles e cúpula do governo… https://t.co/5P2C1xzxn9', 'origin': 'G1'},
-      {'id': 973262404607008769, 'text': 'Opinião | "Hoje, o Brasil tem 210 milhões de presidentes do STF, que sabem exatamente como cada ministro joga", por… https://t.co/h9hMOYlcjp', 'origin': 'EL PAÍS Brasil'},
-      {'id': 973262346318577666, 'text': 'Homem agride irmã grávida e põe fogo na casa https://t.co/z0xwKjHofy', 'origin': 'Portal R7.com'},
-      {'id': 973262346188554240, 'text': 'Maia avalia que, sem verba da União, problema da segurança dificilmente será resolvido https://t.co/UN2nC1V1GC… https://t.co/I4mD0eIB1n', 'origin': 'G1'},
-      {'id': 973260894691057664, 'text': 'PIS-Pasep 2017-2018: nascidos em maio e junho recebem abono a partir de quinta https://t.co/2Da21Ibn0q #G1 https://t.co/j2AYQ7v03X', 'origin': 'G1'},
-      {'id': 973259832156401666, 'text': 'Mineroduto se rompe em MG e prejudica abastecimento de água https://t.co/Zoa3VTDch7', 'origin': 'Portal R7.com'},
-      {'id': 973259253795389440, 'text': 'Ken Dodd, comediante britânico, morre aos 90 anos https://t.co/nzCI6f7qv3 #G1 https://t.co/Cl8NNt9hI0', 'origin': 'G1'},
-      {'id': 973257319793483778, 'text': 'Gustavo Scarpa comemora gols pelo Palmeiras e diz ter mágoa do Flu  https://t.co/BDmxMZNGVh', 'origin': 'Portal R7.com'},
-      {'id': 973254798437965824, 'text': 'Avião que caiu no Nepal fez manobra estranha ao aterrissar https://t.co/w4mFvR3Ujd https://t.co/KpgpoCCeqN', 'origin': 'Portal R7.com'},
-      {'id': 973254797099978752, 'text': "'Tomb Raider': 'A forma como vemos mulheres mudou muito', diz Alicia Vikander sobre novo filme da heroína… https://t.co/mDkms93kM9", 'origin': 'G1'},
-      {'id': 973254545257082880, 'text': "'Tomb Raider': 'A forma como vemos mulheres mudou muito', diz Alicia Vikander sobre novo filme da heroína… https://t.co/pCmt1jqxsH", 'origin': 'G1'},
-      {'id': 973253572761661443, 'text': 'A nova reforma elimina o limite de dois mandatos consecutivos de cinco anos para líderes da China. Xi Jinping tem s… https://t.co/OnTAa8t26l', 'origin': 'CartaCapital'},
-      {'id': 973252325715345408, 'text': 'As esperanças de um aumento do controle das armas nos Estados Unidos se desvanecem https://t.co/E8Bj4iNK0j', 'origin': 'EL PAÍS Brasil'},
-      {'id': 973252280349736960, 'text': 'Aluno é suspenso por três meses após comentário racista em universidade https://t.co/VBVhYLle5b', 'origin': 'Portal R7.com'},
-      {'id': 973251456047439874, 'text': 'RT @hojeemdia: Segundo pesquisa, 80% dos médicos recém-formados no Brasil erram no diagnóstico de diabetes https://t.co/1sb3bkWg3O #HojeEmD…', 'origin': 'Portal R7.com'},
-      {'id': 973251273574178816, 'text': 'Dietas com poucas calorias e baixa gordura podem retardar envelhecimento do cérebro, diz estudo… https://t.co/uddhg88aZr', 'origin': 'G1'},
-      {'id': 973250913103171584, 'text': 'Ordem de chacina com 7 mortos em Fortaleza partiu de presidiário, aponta investigação https://t.co/N1PySfSXqQ #G1 https://t.co/QBoyendKDw', 'origin': 'G1'},
-      {'id': 973249933322186753, 'text': 'RT @paulacramon: Uma janela ao dia a dia da crise venezuelana, na @revistapiaui desde mês. https://t.co/RWT0Mt5aBa', 'origin': 'revista piauí'},
-      {'id': 973249766942535682, 'text': 'Tite quer alto nível contra Alemanha para afastar fantasma do 7 a 1  https://t.co/VkoDlGWNtq', 'origin': 'Portal R7.com'},
-      {'id': 973247552375181313, 'text': 'Raphael Silva Fagundes defende que a tecnologia é fruto da sociedade, da cultura na qual é produzida, jamais o opos… https://t.co/bSQHeMQU0N', 'origin': 'Diplomatique Brasil'},
-      {'id': 973247498897805312, 'text': 'Livro para bala e salva aluno em local de chacina em Fortaleza https://t.co/JP08pHSYA2 #G1 https://t.co/750vgdwqgk', 'origin': 'G1'},
-      {'id': 973247247205924864, 'text': "Carille prega atenção no Corinthians e elogia Bragantino: 'Time chato' https://t.co/WxHDGcrYlx", 'origin': 'Portal R7.com'},
-      {'id': 973245990768693248, 'text': 'Teresa Cristina canta Noel Rosa com a beleza e a fluência do disco de Cartola https://t.co/PdVStKSTac #G1 https://t.co/l67pK3s4pV', 'origin': 'G1'},
-      {'id': 973245486659506177, 'text': "Paulo Carvalho lança 'Carvão', álbum que reúne Tim Bernardes, Jeneci e Arnaldo Antunes https://t.co/Hhy1q0PoTc #G1 https://t.co/lmc0n4wi4Y", 'origin': 'G1'},
-      {'id': 973245017509818368, 'text': 'Estudo que concluía que “Maconha causa mais câncer que cigarro” é fake news de 2008. https://t.co/EtMIidtRqr por @demori', 'origin': 'The Intercept Brasil'},
-      {'id': 973244730938216448, 'text': 'Tite quer alto nível contra Alemanha para afastar fantasma do 7 a 1 https://t.co/VkoDlGWNtq', 'origin': 'Portal R7.com'},
-      {'id': 973244479409926144, 'text': 'Pianista Salomão Soares e acordeonista Toninho Ferragutti unem gerações em duo https://t.co/UqZCJ1gSEH #G1 https://t.co/5ZfK2s6IXA', 'origin': 'G1'},
-      {'id': 973243975648923648, 'text': 'Música de Gil, lançada em 1976, é terceiro single do álbum de Caetano com filhos https://t.co/KJrkUVNvZL #G1 https://t.co/gHoJDAQ7tM', 'origin': 'G1'},
-      {'id': 973243472789504000, 'text': "Álbum de tom carioca, 'Integridade' atesta que Claudio Nucci segue outras toadas https://t.co/y1yfu3PCoE #G1 https://t.co/mY0839FniM", 'origin': 'G1'},
-      {'id': 973242474037641218, 'text': 'Livro para bala e salva aluno em local de chacina em Fortaleza https://t.co/JP08pHSYA2 #G1 https://t.co/UGIIkzk8fI', 'origin': 'G1'},
-      {'id': 973242418656174080, 'text': 'Marlon Brando nunca teve problema para se definir como “uma besta sexual” que tinha “mulheres entrando pela porta e… https://t.co/KOdJMKNSKM', 'origin': 'EL PAÍS Brasil'},
-      {'id': 973242235994234880, 'text': 'IR 2018: Número de registro causa confusão na hora de declarar casa https://t.co/DQe7pwC8de', 'origin': 'Portal R7.com'},
-      {'id': 973239195241275393, 'text': 'Mina Basaran, morta em acidente aéreo após sua despedida de solteira, era socialite e influenciadora digital… https://t.co/fcsBbWXgx0', 'origin': 'G1'},
-      {'id': 973237180544966656, 'text': 'Instagram remove GIF do Stories https://t.co/p5K7rGWvDZ', 'origin': 'Portal R7.com'},
-      {'id': 973236262005039104, 'text': 'Ele é promoter, radialista, ator e muito amigo dos famosos. Estamos falando de David Brazil, o gago mais famoso do… https://t.co/lyq2HALwPT', 'origin': 'Portal R7.com'},
-      {'id': 973235768431927298, 'text': 'Por todo o Brasil há apoiadores da intervenção militar no Rio: em Porto Alegre, em Campinas e até em Brasília. Mas… https://t.co/NWb1vhf1kq', 'origin': 'Diplomatique Brasil'},
-      {'id': 973234669461360640, 'text': 'Com três novidades, Tite chega a 63 jogadores convocados desde 2016 https://t.co/j5bFLLfeDS', 'origin': 'Portal R7.com'},
-      {'id': 973232203072188416, 'text': 'Estudo concluiu que os ossos encontrados no Pacífico podem ser os da legendária aviadora, desaparecida em 1937 https://t.co/HfZXv1fg6O', 'origin': 'EL PAÍS Brasil'},
-      {'id': 973232187012190215, 'text': 'Prefeitura de SP anuncia fechamento de AMAs e outras mudanças na saúde https://t.co/aY7FdzKQqj #G1 https://t.co/QWuy3yXThO', 'origin': 'G1'},
-      {'id': 973232147879182338, 'text': 'Conheça quais são os riscos do lixo eletrônico para a saúde https://t.co/pKSmbBOHeO', 'origin': 'Portal R7.com'},
-      {'id': 973230876006940674, 'text': 'Funcionários dos Correios fazem protesto no Centro do Rio https://t.co/gfgzXvK1wS #G1 https://t.co/6uJfcVKgIY', 'origin': 'G1'},
-      {'id': 973229631632392192, 'text': 'Qual a maior surpresa na convocação da seleção brasileira?https://t.co/XcCxyFJGfA', 'origin': 'Portal R7.com'},
-      {'id': 973229478754340864, 'text': 'Kondzilla fará série para internet sobre conexão entre funk, tráfico e religião em SP https://t.co/3ESvdrSLFK #G1 https://t.co/CPJkpLulYt', 'origin': 'G1'},
-      {'id': 973228624584302592, 'text': 'Quem é o criador do macarrão instantâneo, um dos principais inventores japoneses do século 20… https://t.co/YXpwuZjFXN', 'origin': 'G1'},
-      {'id': 973228002644561925, 'text': 'Ladrão é filmado furtando baleiro em abrigo de animais nos EUA https://t.co/U5llbX3H6A #PlanetaBizarro #G1 https://t.co/GfRUQR8V8U', 'origin': 'G1'},
-      {'id': 973227133572173824, 'text': 'Poluição visual: lojas usam brecha para driblar lei Cidade Limpa em SP https://t.co/hYqhVb8IEE', 'origin': 'Portal R7.com'},
-      {'id': 973226111718035457, 'text': 'Imunização falha e onda antivacina explicam aumento de 400% de sarampo na Europa, diz OMS https://t.co/QtNpS0fHof… https://t.co/MpQ3YiuA2c', 'origin': 'G1'},
-      {'id': 973225313466507267, 'text': 'Funcionária morre baleada durante assalto a banco em São Bernardo do Campo https://t.co/wddLxCT9qm #G1 https://t.co/AQ9znJzORM', 'origin': 'G1'},
-      {'id': 973225100936753152, 'text': "'Aniquilação' usa elementos surreais para criar filme de terror que pode te deixar embasbacado; #G1 já viu… https://t.co/jElu01poYg", 'origin': 'G1'},
-      {'id': 973224851224834049, 'text': 'Mina Basaran, morta em acidente aéreo após sua despedida de solteira, era socialite e influenciadora digital… https://t.co/GgN2dqBdNV', 'origin': 'G1'},
-      {'id': 973224598635532289, 'text': "'Tomb Raider': 'A forma como vemos mulheres mudou muito', diz Alicia Vikander sobre novo filme da heroína… https://t.co/FOUaKQn9vk", 'origin': 'G1'},
-      {'id': 973224598316683264, 'text': 'Pagamento da última parcela do IPVA para placa final 2 vence hoje https://t.co/hXzgTciIeo', 'origin': 'Portal R7.com'},
-      {'id': 973224094484303873, 'text': 'Mina Basaran, morta em acidente aéreo após sua despedida de solteira, era socialite e influenciadora digital… https://t.co/TGqB4sdFva', 'origin': 'G1'},
-      {'id': 973222137233321984, 'text': 'Sem poder contar com Neymar,  Tite recorreu a novidades para os amistosos contra Rússia e Alemanha https://t.co/p0eK7CHLj4', 'origin': 'EL PAÍS Brasil'},
-      {'id': 973222081038094338, 'text': 'PSG manda comitiva ao Brasil para garantir Neymar no clube https://t.co/DEZwyBRO7o', 'origin': 'Portal R7.com'},
-      {'id': 973220784549367808, 'text': 'Sarampo chega a mais países na América em 2018; região foi a primeira livre da doença https://t.co/b9zxnJalyF #G1 https://t.co/0ZJE8lAaRE', 'origin': 'G1'},
-      {'id': 973219565873188865, 'text': 'Neto, Talisca e Willian José são as novidades da convocação de Tite https://t.co/Iytam8zI12', 'origin': 'Portal R7.com'},
-      {'id': 973219182216138753, 'text': 'Mina Basaran, morta em acidente aéreo após sua despedida de solteira, era socialite e influenciadora digital… https://t.co/UoDMFQSCtF', 'origin': 'G1'},
-      {'id': 973218809841512448, 'text': 'Ex-procuradora diz que recebia mesada a mando do governador em troca de silêncio sobre corrupção no RN… https://t.co/JVOXiBbHrF', 'origin': 'G1'},
-      {'id': 973217757734031366, 'text': 'RT @globoesportecom: Tite quer Brasil forte sem Neymar e diz que ainda há disputa por vagas na Copa https://t.co/xc5x3pX9c8 https://t.co/Rp…', 'origin': 'G1'},
-      {'id': 973217551919525894, 'text': 'Estudo pioneiro explica o que acontece com o cérebro no exato momento em que morremos https://t.co/QOOqIvWJad #G1 https://t.co/1mUJ31h51A', 'origin': 'G1'},
-      {'id': 973217048179421184, 'text': 'Skinhead acusado de matar jovem é preso em São Paulo https://t.co/7kMiSCOpIB', 'origin': 'Portal R7.com'},
-      {'id': 973216937458241536, 'text': "RT @cinepop: 'Grey's Anatomy': Último episódio igualou a pior audiência histórica da série - https://t.co/0eJVQYTcFP https://t.co/U2oaPhtJqp", 'origin': 'Portal R7.com'},
-      {'id': 973215855348781056, 'text': 'No método, os alunos entram em contato com o conteúdo antes da aula e utilizam o momento com o professor para tirar… https://t.co/dj8syojLGF', 'origin': 'CartaCapital'},
-      {'id': 973215789942824960, 'text': 'Ômega-3 faz diferença para sua saúde? https://t.co/xMaITElt87 #G1 https://t.co/xiezili6YH', 'origin': 'G1'},
-      {'id': 973215251683594240, 'text': 'Cabo da PM reage a assalto, perde arma para criminoso e acaba baleado no RJ https://t.co/QMPoTta0TA #G1', 'origin': 'G1'},
-      {'id': 973215035416756224, 'text': 'Caixa-preta de avião que caiu e matou 8 amigas após despedida de solteira é achada https://t.co/8dr50aXzcC #G1 https://t.co/XyceZRV21c', 'origin': 'G1'},
-      {'id': 973214977229139969, 'text': 'G1 ao vivo: acidente no Nepal e greve dos Correios https://t.co/kIuf7ggnoE', 'origin': 'G1'},
-      {'id': 973214531903045632, 'text': 'Trabalhadores dos Correios aderem à greve parcial em todo o país https://t.co/NijBiT3IcU', 'origin': 'Portal R7.com'},
-      {'id': 973214038267256833, 'text': 'Polícia apura se corpo encontrado no lago do Parque Ibirapuera é de atendente de telemarketing desaparecida… https://t.co/YFowGRA9x2', 'origin': 'G1'},
-      {'id': 973214028850921472, 'text': 'Documentos jogam luz sobre rede de agências de espionagem que intercepta comunicações em todo o mundo:… https://t.co/fbUcjnQIBH', 'origin': 'The Intercept Brasil'},
-      {'id': 973212585628700672, 'text': 'Tite coloca Alemanha, Brasil, Espanha e França como favoritas https://t.co/O1zVtxzIY4', 'origin': 'Portal R7.com'},
-      {'id': 973212387322056706, 'text': "RT @cinepop: A Importância Social de 'Pantera Negra' - https://t.co/1DmzHJzWBG https://t.co/S4ZcJRzkda", 'origin': 'Portal R7.com'},
-      {'id': 973212123273842688, 'text': 'Hubert de Givenchy, renomado estilista francês, morreu no sábado, 10 de março, aos 91 anos https://t.co/wGfaLcoc1G', 'origin': 'EL PAÍS Brasil'},
-      {'id': 973212017271156736, 'text': 'Estudo pioneiro explica o que acontece com o cérebro no exato momento em que morremos https://t.co/Al1Tx5C9Lp', 'origin': 'Portal R7.com'},
-      {'id': 973210869474713600, 'text': 'Teresa Cristina canta Noel Rosa com a beleza e a fluência do disco de Cartola https://t.co/PdVStKSTac #G1 https://t.co/qOneiuZXX5', 'origin': 'G1'},
-      {'id': 973210654265036800, 'text': 'Faz parte do show cantar (e gravar) Cazuza em bossa nova nos 60 anos de ambos https://t.co/58eeDmvGXk #G1 https://t.co/b8HuElk4lI', 'origin': 'G1'},
-      {'id': 973210468629311488, 'text': 'Voz dos boleros, Edith Veiga tem reeditado álbum em que canta Herivelto e Lupicínio https://t.co/xi7LLatAVu #G1 https://t.co/9X5SloTT4s', 'origin': 'G1'},
-      {'id': 973210249002999810, 'text': "Paulo Carvalho lança 'Carvão', álbum que reúne Tim Bernardes, Jeneci e Arnaldo Antunes https://t.co/Hhy1q0PoTc #G1 https://t.co/2yCxwFj75x", 'origin': 'G1'},
-      {'id': 973209994165407744, 'text': 'Banda Noturnall arma circo em São Paulo para DVD com cantor do Dream Theater https://t.co/FioFnZT6YL #G1 https://t.co/WZurIU03Nx', 'origin': 'G1'},
-      {'id': 973209766242680832, 'text': "'The Bells', álbum com música de Roberto e Erasmo sobre muro de Berlim, sai em CD https://t.co/b3untkwGg6 #G1 https://t.co/n1OBF7pfDP", 'origin': 'G1'},
-      {'id': 973209444975894528, 'text': 'Pianista Salomão Soares e acordeonista Toninho Ferragutti unem gerações em duo https://t.co/UqZCJ1gSEH #G1 https://t.co/WpnKtyB92T', 'origin': 'G1'},
-      {'id': 973209032793214976, 'text': 'João Donato lança três álbuns inéditos, gravados no Brasil entre 1978 e 1989 https://t.co/pccqD5hkOU #G1 https://t.co/KzVVhZ34Hu', 'origin': 'G1'},
-      {'id': 973208847186911232, 'text': 'Música de Gil, lançada em 1976, é terceiro single do álbum de Caetano com filhos https://t.co/KJrkUVNvZL #G1 https://t.co/2czRTpRHz8', 'origin': 'G1'},
-      {'id': 973208598783385600, 'text': 'Titãs encenam violência sexual contra mulher em ópera-rock que estreia em abril https://t.co/nQVxMead7g #G1 https://t.co/9BIJm4i4QW', 'origin': 'G1'},
-      {'id': 973208314313134082, 'text': 'O aluno chamado de escravo por outro colega da FGV prestou queixa e afirma que não vai descansar enquanto o crime d… https://t.co/nHb5qM1jXu', 'origin': 'CartaCapital'},
-      {'id': 973208270205849600, 'text': "Álbum de tom carioca, 'Integridade' atesta que Claudio Nucci segue outras toadas https://t.co/y1yfu3PCoE #G1 https://t.co/1F8G7hmUEd", 'origin': 'G1'},
-      {'id': 973207990890303488, 'text': 'Menino encontrado em porta-malas de carro morreu estrangulado, diz jornal espanhol https://t.co/U7Q86z8r4a #G1 https://t.co/6qpuw5eNv8', 'origin': 'G1'},
-      {'id': 973206982625816576, 'text': 'Rússia convoca 28 jogadores para amistosos contra Brasil e França  https://t.co/s8LbExYIzQ', 'origin': 'Portal R7.com'},
-      {'id': 973204472447975427, 'text': 'Especialista em segurança dá dicas para fugir de golpe em banco https://t.co/U3JgplK3ah', 'origin': 'Portal R7.com'},
-      {'id': 973204133774807041, 'text': 'RT @globoesportecom: Willian José e Talisca estão entre os convocados por Tite para últimos amistosos antes da Copa. Assista ao vivo: https…', 'origin': 'G1'},
-      {'id': 973203710338744321, 'text': 'Ex-procuradora diz que recebia mesada a mando do governador em troca de silêncio sobre corrupção no RN… https://t.co/s8FIx1KU0x', 'origin': 'G1'},
-      {'id': 973203042446331906, 'text': 'Sem Neymar, Tite convoca 25 jogadores para seleção brasileira https://t.co/8UNpVpuOfR', 'origin': 'Portal R7.com'},
-      {'id': 973202703693307904, 'text': 'Mulher é morta a facadas pelo marido em MT após discussão, diz polícia https://t.co/2GL41clUL8 #G1 https://t.co/ucdwrlhZLy', 'origin': 'G1'},
-      {'id': 973201991445905410, 'text': 'O EL PAÍS conversa ao vivo nesta segunda, às 15 horas com a jornalista Patrícia Campos Mello, autora do livro “Lua… https://t.co/0UMG0ascF9', 'origin': 'EL PAÍS Brasil'},
-      {'id': 973201948957724672, 'text': 'Operadora de telemarketing é encontrada morta no Parque Ibirapuera (SP) https://t.co/pwBNlgsLwm', 'origin': 'Portal R7.com'},
-      {'id': 973200745641185281, 'text': 'Com o lançamento de Angola Janga, um catatau de 400 páginas sobre o Quilombo dos Palmares, Marcelo D’Salete entra d… https://t.co/oHBa8idhO2', 'origin': 'CartaCapital'},
-      {'id': 973200741539237888, 'text': 'No método, os alunos entram em contato com o conteúdo antes da aula e utilizam o momento com o professor para tirar… https://t.co/8HNucu5IET', 'origin': 'CartaCapital'},
-      {'id': 973200571036561408, 'text': 'Greve dos Correios: veja como evitar problemas em atrasos de contas e encomendas https://t.co/eIzRSLDpMp #G1 https://t.co/Li7ZavGZgK', 'origin': 'G1'},
-      {'id': 973199935331061760, 'text': 'Caixa-preta de avião que caiu e matou 8 amigas após despedida de solteira é achada https://t.co/8dr50bfaBc #G1 https://t.co/Xj70D5yXdL', 'origin': 'G1'},
-      {'id': 973199935129600000, 'text': 'Caixa-preta de avião que caiu e matou 8 amigas após despedida de solteira é achada https://t.co/8dr50aXzcC #G1 https://t.co/xh83zEUmQ8', 'origin': 'G1'},
-      {'id': 973199432354168832, 'text': 'Mulher é agredida porbandido no Aeroporto de Guarulhos (SP) https://t.co/mz7oWwJ6rQ', 'origin': 'Portal R7.com'},
-      {'id': 973198929230811137, 'text': 'Ministério Público abre investigação contra Metrô de SP por agressões a jornalistas https://t.co/EafalEfGGN #G1 https://t.co/X5vualvQju', 'origin': 'G1'},
-      {'id': 973198518650327040, 'text': 'Deputado estadual Frei Anastácio sofre infarto e é internado em João Pessoa https://t.co/LeuOa0ZLJU #G1 https://t.co/UT0ghUdRJe', 'origin': 'G1'},
-      {'id': 973198425125658624, 'text': 'Quem é o criador do macarrão instantâneo, um dos principais inventores japoneses do século 20… https://t.co/cS6RYEAg6J', 'origin': 'G1'},
-      {'id': 973198276685123584, 'text': 'Correios: Agências e centros de distribuição funcionam em SP; sindicato diz que adesão à greve é de até 75%… https://t.co/8LtGJBLeqm', 'origin': 'G1'},
-      {'id': 973197571261915137, 'text': 'Hubert de Givenchy morre aos 91 anos https://t.co/63dlqRHq3g https://t.co/NsmYKLeDpt', 'origin': 'Portal R7.com'},
-      {'id': 973196928715513856, 'text': 'Na Ucrânia, médico luta contra falta de recursos para salvar https://t.co/zHCEmCdfaq', 'origin': 'Portal R7.com'},
-      {'id': 973196928166039554, 'text': 'Hubert de Givenchy, estilista francês, morre aos 91 anos https://t.co/qlFrwGNiHU #G1 https://t.co/pVAx754g8i', 'origin': 'G1'},
-      {'id': 973196921547390976, 'text': 'Aluno é suspenso após comentário racista em universidade tradicional de SP https://t.co/VBVhYL3DdD https://t.co/kKxfDRIcOB', 'origin': 'Portal R7.com'},
-      {'id': 973195013512400896, 'text': 'Caixa-preta de avião que caiu e matou 8 amigas após despedida de solteira é achada https://t.co/8dr50bfaBc #G1 https://t.co/Oe02CB6VMs', 'origin': 'G1'},
-      {'id': 973194902451445760, 'text': "'Aniquilação' usa elementos surreais para criar filme de terror que pode te deixar embasbacado; #G1 já viu… https://t.co/a76V9jZ6KH", 'origin': 'G1'},
-      {'id': 973194399449481216, 'text': "'Tomb Raider': 'A forma como vemos mulheres mudou muito', diz Alicia Vikander sobre novo filme da heroína… https://t.co/PdESN0kA3T", 'origin': 'G1'},
-      {'id': 973194090853683201, 'text': 'Ministério Público abre investigação contra Metrô de SP por agressões a jornalistas https://t.co/EafalEfGGN #G1 https://t.co/Mu14zNOSU7', 'origin': 'G1'},
-      {'id': 973193645095469057, 'text': 'Hubert de Givenchy, estilista francês, morre aos 91 anos https://t.co/S9P6LFC6AK #G1 https://t.co/LZJbKvxbKc', 'origin': 'G1'},
-      {'id': 973193298889400320, 'text': 'Grávida morre após ser baleada no Rio, mas médicos conseguem fazer parto do bebê https://t.co/7guedDKVas #G1', 'origin': 'G1'},
-      {'id': 973192923213942789, 'text': 'RT @Estrelando: Após separação de Marcelo de Carvalho, Luciana Gimenez pode ir para a Band, diz colunista https://t.co/hBrsveGrro https://t…', 'origin': 'Portal R7.com'},
-      {'id': 973192516395814914, 'text': 'Avião cai em aeroporto do Nepal e deixa 50 mortos https://t.co/V8ROmCK4Bg #G1 https://t.co/J31lflhyOQ', 'origin': 'G1'},
-      {'id': 973191920397713409, 'text': 'Parte dos ministros da Corte avalia que paralisação do dia 15 pode prejudicar a categoria https://t.co/SqNPWcikrj', 'origin': 'EL PAÍS Brasil'},
-      {'id': 973191882086821888, 'text': 'Guerra na Síria soma mais de meio milhão de mortos, segundo ONG https://t.co/22vuKyGn0v', 'origin': 'Portal R7.com'},
-      {'id': 973191631561113600, 'text': '125 concursos com inscrições abertas reúnem 15 mil vagas no país https://t.co/sJ0TBcb6Rq #G1 https://t.co/pg45YxTQfs', 'origin': 'G1'},
-      {'id': 973190896874348544, 'text': 'Avião cai no Irã e mata amigas que voltavam de despedida de solteira https://t.co/TlfDM6CkXN', 'origin': 'Portal R7.com'},
-      {'id': 973190875697131520, 'text': 'Família viaja para esquiar, não acha neve, e TJ manda agência pagar R$ 32 mil no DF https://t.co/XJ3SjsxEaP #G1 https://t.co/r2ZpWNrHbG', 'origin': 'G1'},
-      {'id': 973189203248009216, 'text': 'Quais deverão ser as surpresas na convocação de Tite para a seleção? https://t.co/6IGu02ZQ0N https://t.co/EQ7GhUa9F0', 'origin': 'Portal R7.com'},
-      {'id': 973188640145854465, 'text': 'Hubert de Givenchy, estilista francês, morre aos 91 anos https://t.co/S9P6LFTHZk #G1 https://t.co/JDlW4S2pWw', 'origin': 'G1'},
-      {'id': 973188610743783425, 'text': 'Ex-procuradora diz que recebia mesada a mando do governador em troca de silêncio sobre corrupção no RN… https://t.co/zggtsA1Imh', 'origin': 'G1'},
-      {'id': 973188540329857024, 'text': 'Em novembro passado, @besteves perfilou Walter Neves. Especializado  no estudo do povoamento das Américas, foi o bi… https://t.co/jYlbGSXbOc', 'origin': 'revista piauí'},
-      {'id': 973187673300127744, 'text': 'A série sobre evolução humana foi gravada para a USP e inclui doze vídeos com duração média de 12 minutos. https://t.co/xOGoxzkb4B', 'origin': 'revista piauí'},
-      {'id': 973187352511234048, 'text': 'Estudo pioneiro explica o que acontece com o cérebro no exato momento em que morremos https://t.co/QOOqIvF7LD #G1 https://t.co/NL0pgtf68N', 'origin': 'G1'},
-      {'id': 973186851493343232, 'text': 'MP libera R$ 190 milhões para apoio a venezuelanos refugiados no Brasil https://t.co/RlXctpyToI', 'origin': 'Portal R7.com'},
-      {'id': 973186743976513536, 'text': 'Walter Neves, um dos mais importantes arqueólogos brasileiros, desfaz mitos da evolução no YouTube. https://t.co/MeXyhze848', 'origin': 'revista piauí'},
-      {'id': 973185988536295426, 'text': 'Dietas com poucas calorias e baixa gordura podem retardar envelhecimento do cérebro, diz estudo… https://t.co/NQA1qVPDeA', 'origin': 'G1'},
-      {'id': 973185649913352192, 'text': 'Comércio testou a jornada intermitente no Natal e contratações continuaram em janeiro, mesmo com baixa nas vendas.… https://t.co/irkDZJCcFf', 'origin': 'CartaCapital'},
-      {'id': 973184393517981696, 'text': 'Nos últimos anos se popularizou o conceito de que a inteligência não pode ser definida de uma só maneira… https://t.co/DyoSUAe45u', 'origin': 'EL PAÍS Brasil'},
-      {'id': 973181931574775808, 'text': 'Para pesquisador do Núcleo de Estudos da Violência da USP, a subnotificação pode piorar no contexto do teto de gast… https://t.co/YbO0ek8k79', 'origin': 'CartaCapital'},
-      {'id': 973181815476375554, 'text': 'Estaduais de 2018 chegam à reta final; veja quem pega quem  https://t.co/VhQlp2AleP', 'origin': 'Portal R7.com'},
-      {'id': 973181564132630528, 'text': 'Apesar da infinidade de provas, é desolador perceber como os partidos políticos e o sistema judiciário permitiram a… https://t.co/hjMINT99en', 'origin': 'The Intercept Brasil'},
-      {'id': 973179300458381314, 'text': 'A surpreendente ordem de Putin para derrubar avião de passageiros em 2014 https://t.co/HIwTyELkBR #G1 https://t.co/UUnMvNn61A', 'origin': 'G1'},
-      {'id': 973178075197341696, 'text': 'Boulos, escolhido candidato do PSOL à presidência da República, promete uma defesa radical da democracia. Sua vice… https://t.co/3QffIMR3fd', 'origin': 'CartaCapital'},
-      {'id': 973177785790459906, 'text': 'As autoridades policiais confirmaram ao menos 50 mortos e diversos feridos https://t.co/78bpdMgLey', 'origin': 'EL PAÍS Brasil'},
-      {'id': 973177166358827014, 'text': 'RT @Estrelando: Dez séries não norte-americanas da Netflix que você precisa acompanhar! https://t.co/vEntfpC9gR https://t.co/Hb3xUYpQS6', 'origin': 'Portal R7.com'},
-      {'id': 973176784362659842, 'text': 'Alckmin anuncia reajuste salarial para diretores e supervisores  https://t.co/zy5eumpeow', 'origin': 'Portal R7.com'},
-    ]
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import strings
+
+from flask_sqlalchemy import SQLAlchemy
+from models import MinimumId
+from sqlalchemy.sql import func
+from models import MinimumId
+
+
+class Database():
+
+      database = None
+
+
+      def __init__(self, app):
+
+            app.config['SQLALCHEMY_DATABASE_URI'] = strings.POSTGRESQL_URI
+            app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+            self.database = SQLAlchemy(app)
+
+
+      def get_current_minimum_id(self):
+            """
+                  Get the minimum id.
+                  
+                  Return:
+                        string: the minimum id stored
+            """
+            minimum_id = self.database.session.query(MinimumId).first()
+            if(not minimum_id):
+                  current_minimum_id = 1
+                  minimum_id = MinimumId(str(current_minimum_id))
+                  self.database.session.add(minimum_id)
+                  self.database.session.commit()
+
+            return minimum_id 
+
+
+      def update_current_minimum_id(self, 
+                                    current_minimum_id, 
+                                    current_maximum_id):
+            """
+                  Update the minimum id.
+                  
+                  Args:
+                        current_minimum_id (MinimumId): object of the class 
+                        MinimumId.
+                        current_maximum_id (int): maximum id from the last 
+                        tweets fetching.
+                  Return:
+                        None
+            """
+            # updating minimum ID value
+            current_minimum_id.value = current_maximum_id
+            self.database.session.commit()
+
+
+      def post_tweet(self, tweet):
+            """
+                  Save a single tweet on database.
+
+                  Args:
+                        tweet (string): text to be saved
+                  Return:
+                        None
+            """
+            self.database.session.add(tweet)
+            self.database.session.commit()

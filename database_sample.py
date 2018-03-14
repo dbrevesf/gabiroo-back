@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-
 TWEET_SAMPLES = [
       {'id': 973307645405876231, 'text': 'Ilan diz que é bom começar 2018 com inflação abaixo da meta https://t.co/sf7fC1M8rp', 'origin': 'Portal R7.com'},
       {'id': 973306499144540160, 'text': 'Provável que você nunca tenha ouvido falar de uma das mais poderosas alianças do mundo. Pelo simples fato de sua ex… https://t.co/QI7haXpCCm', 'origin': 'The Intercept Brasil'},
