@@ -62,7 +62,7 @@ class Database():
                   Save a single tweet on database.
 
                   Args:
-                        tweet (string): text to be saved
+                        tweet (Tweet): Tweet to be saved
                   Return:
                         None
             """

@@ -10,12 +10,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
 # Create our database model
-class Tweets(db.Model):
+class Tweet(db.Model):
 
-    __tablename__ = "tweets"
+    __tablename__ = "tweet"
     tweet_id = db.Column(db.String, primary_key=True)
     tweet = db.Column(db.String(280))
-    sentiment = db.Column(db.Boolean)
+    sentiment = db.Column(db.Integer)
     origin = db.Column(db.String)
 
     def __init__(self, tweet_id, tweet, sentiment, origin):

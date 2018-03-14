@@ -7,7 +7,7 @@ import tweepy
 from database import Database
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from models import Tweets
+from models import Tweet
 from tweepy import OAuthHandler
 from twitter_api import TwitterAPI
 
@@ -44,17 +44,16 @@ def post_sentiment():
 			json: a response sample
            
 	"""
-	tweetSentiment = {}
 	if request.json:
 		tweet_id = str(request.json['id'])
 		text = request.json['text']
 		origin = request.json['origin']
 		sentiment = request.json['sentiment']
-		if(sentiment == True):
+		if(sentiment == 1):
 			destination_twitter.post_tweet(text)
-		tweetSentiment = Tweets(tweet_id, text, sentiment, origin)
-		print("DEU BAO")
-
+		tweet = Tweet(tweet_id, text, sentiment, origin)
+		database.post_tweet(tweet)
+		
 	return jsonify({'result': 'true'})
 
 
