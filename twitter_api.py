@@ -50,7 +50,6 @@ class TwitterAPI():
 		# building the tweet list with object
 		tweet_list = []
 		current_maximum_id = 0
-		
 		try:
 			for status in tweepy.Cursor(self.twitter_api.home_timeline, 
 										since_id=minimum_id_value).items(200):
@@ -63,15 +62,18 @@ class TwitterAPI():
 						 "id": status.id,
 						 "origin": status.user.name}
 				tweet_list.append(tweet)
-				
+
+			# updating minimum ID
+			self.database.update_current_minimum_id(minimum_id, 
+													current_maximum_id)
+
 		except tweepy.error.TweepError:
+			print("Tweepy error")
 			print(datetime.datetime.now())
 
 	
 
-		# updating minimum ID
-		self.database.update_current_minimum_id(minimum_id, 
-												current_maximum_id)
+		
 
 		return tweet_list
 
