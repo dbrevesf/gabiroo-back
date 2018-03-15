@@ -23,18 +23,19 @@ class Database():
 
       def get_current_minimum_id(self):
             """
-                  Get the minimum id.
+            Get the minimum id.
                   
-                  Return:
-                        string: the minimum id stored
+            Return:
+                  string: the minimum id stored
             """
             minimum_id = self.database.session.query(MinimumId).first()
+
             if(not minimum_id):
                   current_minimum_id = 1
                   minimum_id = MinimumId(str(current_minimum_id))
                   self.database.session.add(minimum_id)
                   self.database.session.commit()
-
+      
             return minimum_id 
 
 
@@ -42,15 +43,15 @@ class Database():
                                     current_minimum_id, 
                                     current_maximum_id):
             """
-                  Update the minimum id.
-                  
-                  Args:
-                        current_minimum_id (MinimumId): object of the class 
-                        MinimumId.
-                        current_maximum_id (int): maximum id from the last 
-                        tweets fetching.
-                  Return:
-                        None
+            Update the minimum id.
+            
+            Args:
+                  current_minimum_id (MinimumId): object of the class 
+                  MinimumId.
+                  current_maximum_id (int): maximum id from the last 
+                  tweets fetching.
+            Return:
+                  None
             """
             # updating minimum ID value
             current_minimum_id.value = current_maximum_id
@@ -59,12 +60,15 @@ class Database():
 
       def post_tweet(self, tweet):
             """
-                  Save a single tweet on database.
+            Save a single tweet on database.
 
-                  Args:
-                        tweet (Tweet): Tweet to be saved
-                  Return:
-                        None
+            Args:
+                  tweet (Tweet): Tweet to be saved
+            Return:
+                  None
             """
-            self.database.session.add(tweet)
-            self.database.session.commit()
+            try:
+                  self.database.session.add(tweet)
+                  self.database.session.commit()
+            except :
+                  pass

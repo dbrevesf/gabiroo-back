@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import datetime
+import strings
+import tweepy
+
 from database import Database
 from database_sample import TWEET_SAMPLES
 from secured_credentials import *
-import strings
-import tweepy
+
 
 class TwitterAPI():
 
@@ -44,22 +47,26 @@ class TwitterAPI():
 		minimum_id = self.database.get_current_minimum_id()
 		minimum_id_value = int(minimum_id.value)
 
-		print("MINIMUM VALUE %d" % (minimum_id_value))
 		# building the tweet list with object
 		tweet_list = []
 		current_maximum_id = 0
 		
-		for status in tweepy.Cursor(self.twitter_api.home_timeline, 
-									since_id=minimum_id_value).items(200):
-			# getting the current maximum id
-			if(status.id > minimum_id_value):
-				current_maximum_id = status.id
-			else:
-				current_maximum_id = minimum_id_value
-			tweet = {"text":status.text,
-					 "id": status.id,
-					 "origin": status.user.name}
-			tweet_list.append(tweet)
+		try:
+			for status in tweepy.Cursor(self.twitter_api.home_timeline, 
+										since_id=minimum_id_value).items(200):
+				# getting the current maximum id
+				if(status.id > minimum_id_value):
+					minimum_id_value = status.id
+					current_maximum_id = minimum_id_value
+					
+				tweet = {"text":status.text,
+						 "id": status.id,
+						 "origin": status.user.name}
+				tweet_list.append(tweet)
+				
+		except tweepy.error.TweepError:
+			print(datetime.datetime.now())
+
 	
 
 		# updating minimum ID
