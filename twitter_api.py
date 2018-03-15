@@ -69,11 +69,7 @@ class TwitterAPI():
 
 		except tweepy.error.TweepError:
 			print("Tweepy error")
-			print(datetime.datetime.now())
-
-	
-
-		
+			print(datetime.datetime.now())		
 
 		return tweet_list
 
