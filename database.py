@@ -4,7 +4,7 @@
 import strings
 
 from flask_sqlalchemy import SQLAlchemy
-from models import MinimumId
+from models import MinimumId, Tweet
 from sqlalchemy.sql import func
 from models import MinimumId
 
@@ -19,6 +19,18 @@ class Database():
             app.config['SQLALCHEMY_DATABASE_URI'] = strings.POSTGRESQL_URI
             app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
             self.database = SQLAlchemy(app)
+
+
+      def get_tweets(self):
+            """
+            Get all the tweets stored in the database.
+
+            Return:
+                  list: list of tweets
+            """
+
+            tweet_list = self.database.session.query(Tweet).filter_by(sentiment=0).all()
+            return tweet_list
 
 
       def get_current_minimum_id(self):
@@ -55,6 +67,21 @@ class Database():
             """
             # updating minimum ID value
             current_minimum_id.value = current_maximum_id
+            self.database.session.commit()
+
+      def update_tweet_sentiment(self, tweet_id, sentiment):
+            """
+            Update the sentiment of a single tweet
+
+            Args:
+                  tweet_id (string): the ID of the tweet to be updated
+                  sentiment (int): the sentiment of the tweet. 
+
+            Return:
+                  None
+            """
+            tweet = self.database.session.query(Tweet).filter_by(tweet_id=tweet_id).first()
+            tweet.sentiment = sentiment
             self.database.session.commit()
 
 

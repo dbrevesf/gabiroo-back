@@ -7,14 +7,14 @@ twitted on source account and then save them in a Postgre database
 """
 
 import strings
-
 from flask import Flask
-
 from database import Database
 from models import Tweet
 from twitter_api import TwitterAPI
+from datetime import datetime
 
 print("- INITIALIZING SCRIPT TO FETCH TWEETS ")
+print("HORA CERTA ROGERINHO: %s" % (str(datetime.now())))
 app = Flask(__name__)
 
 print("- INSTANTIATING DATABASE ")

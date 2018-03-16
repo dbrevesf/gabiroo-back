@@ -11,6 +11,9 @@ from models import Tweet
 from tweepy import OAuthHandler
 from twitter_api import TwitterAPI
 
+BAD = 1
+GOOD = 2
+IGNORE = 3
 
 app = Flask(__name__)
 database = Database(app)
@@ -30,9 +33,17 @@ def get_tweets():
            
 	"""
 	# getting source tweet list
-	tweet_list = source_twitter.get_timeline_tweets()
+	tweet_list = database.get_tweets()
 	print("%d tweets were fetched" % (len(tweet_list)))
-	return jsonify(tweet_list)
+
+	# build the response:
+	response = []
+	for tweet in tweet_list:
+		response.append({'text': tweet.tweet,
+						 'id': tweet.tweet_id,
+						 'origin': tweet.origin})
+	
+	return jsonify(response)
 
 
 @app.route('/sentiment', methods=['POST'])
@@ -47,12 +58,11 @@ def post_sentiment():
 	if request.json:
 		tweet_id = str(request.json['id'])
 		text = request.json['text']
-		origin = request.json['origin']
 		sentiment = request.json['sentiment']
-		if(sentiment == 1):
+		if(sentiment == GOOD):
 			destination_twitter.post_tweet(text)
-		tweet = Tweet(tweet_id, text, sentiment, origin)
-		database.post_tweet(tweet)
+			
+		database.update_tweet_sentiment(tweet_id, sentiment)
 		
 	return jsonify({'result': 'true'})
 
