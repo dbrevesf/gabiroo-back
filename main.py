@@ -25,24 +25,57 @@ CORS(app)
 @app.route('/tweets', methods=['GET'])
 def get_tweets():
 	"""
-		Call the twitter api to get up to 200 tweets from 
-		source timeline.
-                  
-      	Return:
-			json: the tweet list in json format.
+	Call the twitter api to get up to 200 tweets from 
+	source timeline.
+              
+  	Return:
+		json: the tweet list in json format.
            
 	"""
-	# getting source tweet list
+	
 	tweet_list = database.get_tweets()
 	print("%d tweets were fetched" % (len(tweet_list)))
-
-	# build the response:
 	response = []
 	for tweet in tweet_list:
 		response.append({'text': tweet.tweet,
 						 'id': tweet.tweet_id,
 						 'origin': tweet.origin})
 	
+	return jsonify(response)
+
+@app.route('/goodnews', methods=['GET', 'POST'])
+def good_news():
+	"""
+	GET
+		Get all the tweets classified as good
+
+	    Return:
+	          list: list of tweets
+	
+	POST
+		Publish a good news on destination Twitter account
+		Return:
+			json: a response sample
+	"""
+	response = None
+
+	if request.method == 'POST':
+		if(request.json):
+			if 'text' and 'id' in request.json:
+				good_news = request.json['text']
+				tweet_id = request.json['id']
+				database.update_tweet_sentiment(tweet_id, 4)
+				destination_twitter.post_tweet(good_news)
+		response = {'result': 'true'}
+
+	elif request.method == 'GET':
+		good_news = database.get_good_tweets()
+		response = []
+		for tweet in good_news:
+			response.append({'text': tweet.tweet,
+							 'id': tweet.tweet_id,
+							 'origin': tweet.origin})
+
 	return jsonify(response)
 
 
@@ -57,14 +90,11 @@ def post_sentiment():
 	"""
 	if request.json:
 		tweet_id = str(request.json['id'])
-		text = request.json['text']
 		sentiment = request.json['sentiment']
-		if(sentiment == GOOD):
-			destination_twitter.post_tweet(text)
-			
 		database.update_tweet_sentiment(tweet_id, sentiment)
 		
 	return jsonify({'result': 'true'})
+
 
 
 

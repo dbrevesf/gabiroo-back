@@ -46,7 +46,7 @@ class TwitterAPI():
 		# getting the current minimum ID
 		minimum_id = self.database.get_current_minimum_id()
 		minimum_id_value = int(minimum_id.value)
-
+		print(minimum_id_value)
 		# building the tweet list with object
 		tweet_list = []
 		current_maximum_id = 0
@@ -64,12 +64,12 @@ class TwitterAPI():
 				tweet_list.append(tweet)
 
 			# updating minimum ID
-			self.database.update_current_minimum_id(minimum_id, 
-													current_maximum_id)
+			if(current_maximum_id > 0):
+				self.database.update_current_minimum_id(minimum_id, 
+														current_maximum_id)
 
 		except tweepy.error.TweepError:
 			print("Tweepy error")
-			print(datetime.datetime.now())		
 
 		return tweet_list
 
@@ -82,11 +82,3 @@ class TwitterAPI():
 				tweet (string): the tweet to be posted
         """
 		self.twitter_api.update_status(tweet)
-
-
-
-
-
-
-
-

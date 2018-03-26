@@ -29,7 +29,19 @@ class Database():
                   list: list of tweets
             """
 
-            tweet_list = self.database.session.query(Tweet).filter_by(sentiment=0).all()
+            tweet_list = self.database.session.query(Tweet).filter_by(sentiment=0).limit(200).all()
+            return tweet_list
+
+
+      def get_good_tweets(self):
+            """
+            Get all the tweets classified as good
+
+            Return:
+                  list: list of tweets
+            """
+
+            tweet_list = self.database.session.query(Tweet).filter_by(sentiment=2).all()
             return tweet_list
 
 
@@ -41,7 +53,8 @@ class Database():
                   string: the minimum id stored
             """
             minimum_id = self.database.session.query(MinimumId).first()
-
+            print("minimum_id")
+            print(minimum_id)
             if(not minimum_id):
                   current_minimum_id = 1
                   minimum_id = MinimumId(str(current_minimum_id))
@@ -75,7 +88,11 @@ class Database():
 
             Args:
                   tweet_id (string): the ID of the tweet to be updated
-                  sentiment (int): the sentiment of the tweet. 
+                  sentiment (int): the sentiment of the tweet:
+                        1 : bad
+                        2 : good
+                        3 : ignore
+                        4 : good and posted
 
             Return:
                   None
